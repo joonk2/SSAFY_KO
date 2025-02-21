@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 속성선택자 h1 요소 중에 class 속성이 "myclass" 인 것만 선택 */
+        h1[class = "myclass"]{
+            color : red;
+        }
+        .make_red{
+            color : red;
+        }
+        h2 {
+            color : blue
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <h1>반갑소</h1>
+    <h1 class = "myclass">반갑소</h1>
+    <p class = "myclass">반갑소</p>
+
+    <h2 class = "make_red">반갑소</h2>
+</body>
+</html>
