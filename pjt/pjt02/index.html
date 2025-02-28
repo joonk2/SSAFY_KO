@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 기본 정보 페이지</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 프로필 사진을 원 또는 타원으로 설정 */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        /* 투자 성향 섹션 스타일 */
+        .investment-style {
+            margin-top: 20px;
+        }
+
+        /* textarea 스타일 */
+        .intro-textarea {
+            width: 100%;
+            height: 120px;
+        }
+
+        /* 버튼 스타일 */
+        .btn-submit {
+            margin-top: 10px;
+        }
+
+
+        /* 테두리 스타일 */
+        .border-box {
+            border: 2px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .h1 {
+            text-align: center;
+        }
+
+        .p {
+            font-size: 16px;
+        }
+
+        .p1,
+        .p2,
+        .p3 {
+            margin-bottom: 100px;
+            /* 섹션마다 아래쪽 공백 추가 */
+        }
+
+
+        /* 회원 정보 필드 스타일 */
+        .border-box-member-number {
+            border: 2px solid #ddd;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 자산과 연봉을 좌우 배치 */
+        .row .col-md-6 {
+            margin-bottom: 10px;
+        }
+
+
+
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+            /* 라디오 버튼과 라벨 사이 간격 */
+        }
+
+        .radio-group label {
+            margin-right: 15px;
+            /* 각 라디오 버튼 그룹 간격 */
+        }
+
+
+        .readonly-field {
+            background-color: #f0f0f0;
+            pointer-events: none;
+            /* 클릭 및 입력 방지 */
+            border: 1px solid #ccc;
+            /* 테두리 색상 변경 */
+        }
+
+        .btn-info {
+            color: white;
+        }
+
+
+        /* 네비게이션 바 고정 */
+        .navbar.navbar-expand-lg.navbar-light.bg-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            /* 네비게이션 바가 항상 상단에 위치하도록 설정 */
+        }
+
+
+        /* 본문 시작 부분에 여백 추가 */
+        .container.mt-5 {
+            margin-top: 120px;
+            /* 네비게이션 바의 높이만큼 여백을 추가 */
+        }
+
+        #A {
+            margin-top: 100px;
+
+        }
+
+
+
+
+        /* ------------------ test ------------------------ */
+        /* html과 body에 대해 전체 화면을 차지하게 설정 */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('gold-palace.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.3; /* 배경 이미지 10% 투명도 */
+            z-index: -1;
+        }
+        
+
+
+
+/* ------------------- E ------------------------ */
+        /* 반응형 디자인 구현 부분 */
+        @media (max-width: 768px) {
+                    /* 화면 가로 사이즈가 768px 미만으로 내려가면, '투자 성향' 파트가 '자기소개' 아래로 이동 */
+                    .row .col-md-6 {
+                        margin-bottom: 15px;
+                    }
+
+                    .investment-style {
+                        order: 2;
+                        /* 투자 성향을 두 번째로 배치 */
+                        margin-top: 20px;
+                    }
+
+                    .profile-img {
+                        width: 120px;
+                        height: 120px;
+                    }
+
+                    .h1 {
+                        font-size: 1.5rem;
+                    }
+
+                    /* 반응형에 맞춰 모든 글씨 크기 조정 */
+                    .p, .p1, .p2, .p3 {
+                        font-size: 14px;
+                    }
+                }
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+
+
+
+    <!--------------- C ---------------------->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <h1 class="navbar-brand" href="#" style="background-image: url('money.png'); 
+                   background-repeat: no-repeat; 
+                   background-size: contain; 
+                   background-position: center center; 
+                   padding: 20px; 
+                   color: fuchsia; 
+                   font-weight: bold; 
+                   height: 80px; 
+                   white-space: nowrap; 
+                   display: flex; /* flex로 변경 */
+                   justify-content: center; /* 텍스트를 수평 중앙 정렬 */
+                   align-items: center; /* 텍스트를 수직 중앙 정렬 */
+                   margin: 0;
+                   text-align: center; 
+                   width: 100%;">
+                고수르의 프로필
+            </h1>
+        </div>
+    </nav>
+
+
+
+
+    <!-- 두 번째 네비게이션 바 (기본 정보 수정, 포트폴리오 수정) -->
+    <nav class="navbar navbar-expand navbar-light bg-light" style="position: sticky; top: 80px; z-index: 10;">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#A">기본 정보 수정</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#B">포트폴리오 수정</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+    <!------------------- A  -------------------------->
+    <div id="A" class="container">
+        <div class="border-box">
+            <h1 class="title text-center">기본 정보 수집</h1>
+
+            <!-- 2등분 그리드 레이아웃 -->
+            <div class="row">
+                <!-- 왼쪽: 프로필 사진, 자기소개 -->
+                <div class="col-md-6 text-center">
+                    <img src="ssafy.png" alt="Profile Image" class="profile-img">
+                    <h4>자기소개</h4>
+
+                    <div class="input-group">
+                        <textarea class="form-control" rows="2" placeholder="돈이 필요한가? 반갑네 나는 ★고수르★ 라네"></textarea>
+                        <button class="btn btn-info">Update</button>
+                    </div>
+                </div>
+
+                <!-- 오른쪽: 투자 성향 -->
+                <div class="col-md-6 text-center">
+
+                    <div class="p1">
+                        <p class><strong>투자상품 선호도</strong></p>
+                        <input type="checkbox" id="stock" name="investment"><label for="stock"> 주식</label>
+                        <input type="checkbox" id="bond" name="investment"><label for="bond">채권</label>
+                        <input type="checkbox" id="real_estate" name="investment"><label for="real_estate"> 부동산</label>
+                        <input type="checkbox" id="crypto" name="investment"><label for="crypto"> 가상자산</label>
+                    </div>
+
+                    <div class="p2">
+                        <p class="mt-3"><strong>투자 스타일</strong></p>
+                        <input type="radio" id="conservative" name="style" checked><label for="conservative">
+                            안정적</label>
+                        <input type="radio" id="moderate" name="style"><label for="moderate"> 중립적</label>
+                        <input type="radio" id="aggressive" name="style"><label for="aggressive"> 공격적</label>
+                    </div>
+
+                    <div class="p3">
+                        <p class="mt-3"><strong>관심 종목</strong></p>
+                        <input type="checkbox" id="tech" name="sector"><label for="tech"> 정보기술</label>
+                        <input type="checkbox" id="consumer" name="sector"><label for="consumer"> 소비재</label>
+                        <input type="checkbox" id="finance" name="sector"><label for="finance"> 금융</label>
+                    </div>
+
+
+
+<!----------------------------------- B ----------------------------->
+                </div>
+                <p>회원 번호</p>
+                <input type="text" class="form-control mb-2 readonly-field" value="1" readonly>
+
+                <p>ID</p>
+                <input type="text" class="form-control mb-2 readonly-field" value="김싸피" readonly>
+
+                <p>Email</p>
+                <div class="input-group mb-2">
+                    <input type="email" class="form-control" placeholder="이메일을 설정해주세요">
+                    <button class="btn btn-light">@example.com</button>
+                    <button class="btn btn-info">Update</button>
+                </div>
+
+                <p>Nickname</p>
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" placeholder="닉네임을 설정해주세요">
+                    <button class="btn btn-info">Update</button>
+                </div>
+
+                <p>나이</p>
+                <div class="input-group mb-2">
+                    <input type="number" class="form-control" placeholder="나이를 설정해주세요">
+                    <button class="btn btn-info">Update</button>
+                </div>
+
+                <!-- 자산과 연봉을 좌우 배치 -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>자산</p>
+                        <div class="input-group">
+                            <button class="btn btn-light">$</button>
+                            <input type="number" class="form-control" placeholder="현재 자산을 입력해주세요">
+                            <button class="btn btn-info">Update</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p>연봉</p>
+                        <div class="input-group">
+                            <button class="btn btn-light">$</button>
+                            <input type="number" class="form-control" placeholder="연봉을 입력해주세요">
+                            <button class="btn btn-info">Update</button>
+                        </div>
+                    </div>
+
+            </div>
+
+            
+<!----------------------------------- D ----------------------------->
+            <div id="B" class="container mt-5">
+                <h1 class="title text-center">포트폴리오 수정</h1>
+
+                </div>
+                <p>회원 번호</p>
+                <input type="text" class="form-control mb-2 readonly-field" value="1" readonly>
+
+                <p>ID</p>
+                <input type="text" class="form-control mb-2 readonly-field" value="김싸피" readonly>
+                </div>
+                
+                <p style="margin-bottom: 5px;">저축 성향</p>
+                <div class="input-group" style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <input type="radio" id="conservative" name="style" checked style="margin-right: 10px;">
+                    <label for="conservative" style="margin-right: 15px;">도전형</label>
+                    
+                    <input type="radio" id="moderate" name="style" style="margin-right: 10px;">
+                    <label for="moderate" style="margin-right: 15px;">검소형</label>
+                    
+                    <input type="radio" id="aggressive" name="style" style="margin-right: 10px;">
+                    <label for="aggressive" style="margin-right: 15px;">알뜰형</label>
+                    
+                    <input type="number" class="form-control" readonly style="background-color: transparent; border: none; margin-right: 10px;">
+                    
+                    <button class="btn btn-info">Update</button>
+                </div>
+                
+                <p style="margin-bottom: 5px;">최애은행</p>
+                <div class="input-group mb-2">
+                    <input type="number" class="form-control" placeholder="가장 좋아하는 은행을 입력해주세요">
+                    <button class="btn btn-info">Update</button>
+                </div>
+                
+
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
