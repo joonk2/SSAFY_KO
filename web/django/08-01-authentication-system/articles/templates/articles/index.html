@@ -6,13 +6,14 @@
   <title>Document</title>
 </head>
 <body>
-  <h1> 어어 어서오게나, {{ user.username }} </h1>
+  <h1>안녕하세요, {{ user.username }}님</h1>
 
   <h1>Articles</h1>
-  <a href="{% url "accounts:login" %}">CREATE</a>
-  <form action ="{% url "accounts:logout" %}" method="POST">
+  <a href="{% url "articles:create" %}">CREATE</a>
+  <a href="{% url "accounts:login" %}">로그인</a>
+  <form action="{% url "accounts:logout" %}" method="POST">
     {% csrf_token %}
-    <input type = "submit" value = "로그아웃">
+    <input type="submit" value="로그아웃">
   </form>
 
 
