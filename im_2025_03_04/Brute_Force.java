@@ -26,6 +26,12 @@ ex) 각각 6 4 2 3 일때 [2,3,4] 로 cnt=3이 최대 팀원 수다.
 #3 1
 
 
+
+
+
+
+
+
 [코드 개요]
 1. BruteForce(완전탐색)를 통해 left, right를 사용하여 범위 안에 해당되는 것들을 비교하며 최대 값 출력
 2. p[right]-p[left]를 통해 범위 안에 해당되면 ++
@@ -71,12 +77,12 @@ public class Brute_Force {
 			
 			// Brute-Force
 			int max_player_cnt = 0;
-			for (int left = 0; left < N; left++) {
-				int player_cnt = 0;
-				for (int right = left; right < N; right++) {
+			for (int i = 0; i < N; i++) {
+				int playert_temp_cnt = 0;
+				for (int j = i; j < N; j++) {
 					
 					// K의 범위안에 해당되는 값들은 전부 ++
-					if(player[right]-player[left] <= K) {
+					if(player[i]-K <= player[j] && player[j] <= player[i] + K) {
 						player_cnt++;
 					}
 				}
