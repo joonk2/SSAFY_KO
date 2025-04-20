@@ -28,90 +28,85 @@
 #2 42
 */
 
-package algorithm;
 
-import java.io.BufferedReader;
+
+
+
+package swea;
+
 import java.io.IOException;
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-//import java.util.Arrays;
+import java.util.Arrays;
 
-public class Day1 {
-	static int[] dx = {0,-1,0,1};
-	static int[] dy = {1,0,-1,0};
+public class Solution {
+	static int[] dr = {-1,1,0,0};
+	static int[] dc = {0,0,-1,1};
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
-		
 		for (int tc = 1; tc < T+1; tc++) {
 			int monster = Integer.parseInt(br.readLine());
-			int N = 10;
+			int[][] map = new int[10][10];
 			
-			int[][] matrix = new int[N][N];
-			
-			for (int y = 0; y < N; y++) {
+			for (int r = 0; r < 10; r++) {
 				String col = br.readLine();
-				for (int x = 0; x < N; x++) {
-					matrix[y][x] = col.charAt(x) - '0';
+				for (int c = 0; c < 10; c++) {
+					map[r][c] = col.charAt(c)-'0';
 				}
 			}
 			
 			
-			for (int y = 0; y < N; y++) {
-				for (int x = 0; x < N; x++) {
-					int target = matrix[y][x];
-					
-					// 괴물 1 ~ 3
-					if (1 <= target && target <= 3) {
+			for (int r = 0; r < 10; r++) {
+				for (int c = 0; c < 10; c++) {
+					int temp_pos = map[r][c];
+					int monster_power = map[r][c];
+					if (temp_pos == 1 || temp_pos == 2 || temp_pos == 3) {
 						for (int d = 0; d < 4; d++) {
-							for (int k = 1; k < target + 1; k++) {
-								int ny = (dy[d]*k) + y;
-								int nx = (dx[d]*k) + x;
+							for (int k = 1; k < monster_power+1; k++) {
+								int nr = r + (dr[d]*k);
+								int nc = c + (dc[d]*k);
 								
-								// cond-1 범위 밖이면 break
-								if (ny < 0 || ny > N-1 || nx < 0 || nx > N-1) {
+								// cond-1 (range)
+								if (nr < 0 || nr >= 10 || nc < 0 || nc >= 10) break;
+								
+								// cond-2 (monster or wall, then break)
+								if (map[nr][nc] == 1 || map[nr][nc] == 2 || map[nr][nc] == 3 || map[nr][nc] == 4) {
 									break;
-								}
+								} 
 								
-								// cond-2 괴물을 만나도 break
-								if ( (1 <= matrix[ny][nx] && matrix[ny][nx] <= 3)  || (matrix[ny][nx] == 4) ) {
-									break;
-								}
-								
-								// cond-3 괴물의 광선이 비춰지는 곳 0 --> 123;
-								if (matrix[ny][nx] == 0) {
-									matrix[ny][nx] = 123;
-								}
-								
+								// cond-3 (infesting area)
+								if (map[nr][nc] == 0) map[nr][nc] = 999;
 								
 							}
 						}
 					}
-					
-					
 				}
 			}
 			
 			
 			
-			int cnt = 0;
-			for (int y = 0; y < N; y++) {
-				for (int x = 0; x < N; x++) {
-					if (matrix[y][x] == 0) {
-						cnt++;
-					}
+			
+//			for (int i = 0; i < 10; i++) {
+//				System.out.println(Arrays.toString(map[i]));
+//			}
+			
+			
+			
+			int cnt_safeZone = 0;
+			for (int r = 0; r < 10; r++) {
+				for (int c = 0; c < 10; c++) {
+					if(map[r][c] == 0) cnt_safeZone++;
 				}
 			}
 			
-			System.out.println("#" + tc + " "+ cnt);
 			
-//			System.out.println(Arrays.deepToString(matrix));
-			
+			System.out.println("#" + tc + " " + cnt_safeZone);
 			
 			
 		}
-		
 		
 		
 		
