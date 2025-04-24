@@ -4,7 +4,7 @@
 a) 같은 모자를 여러 사람에게 줄 수 없게 해야 함
 b) 최대한 많은 사람들이 모자를 쓸 수 있게 하자
 
-여기서 사람과 모자의 크기 차이가 N 이하면 착용 가능하다.
+여기서 사람과 모자의 크기 차이가 3이하면 착용 가능하다.
 
 [제약사항]
 a) N은 3 이상 500 이하
@@ -71,14 +71,17 @@ public class greedy {
 			boolean[] used = new boolean[N];
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
-					if (!used[j] && Math.abs(people[i]-hat[j]) <= N) {
+					if (!used[j] && Math.abs(people[i]-hat[j]) <= 3) {
 						total_cnt++;
 						used[j] = true;
 						break;
 					}
 				}
 			}
-			
+
+
+// j를 기억하다가 i가 j부터 갱신됨
+
 			
 			
 //			System.out.println(Arrays.toString(people));
